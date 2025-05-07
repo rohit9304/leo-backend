@@ -5,6 +5,6 @@ import java.util.List;
 
 @Service
 public interface PopulationService {
-    List<Population> getAllLearners();
+    List<Population> getLearnersNotInAssociate();
     
 } 

@@ -20,6 +20,6 @@ public class PopulationController {
 
     @GetMapping
     public List<Population> getAllLearners() {
-        return learnerService.getAllLearners();
+        return learnerService.getLearnersNotInAssociate();
     }
 }

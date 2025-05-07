@@ -8,6 +8,7 @@ import com.demoproject.onboarding.service.AssociateTrackerService;
 
 @RestController
 @RequestMapping("/api/associates")
+@CrossOrigin
 public class AssociateTrackerController {
     @Autowired
     private AssociateTrackerService associateTrackerService;
