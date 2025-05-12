@@ -1,41 +1,35 @@
 package com.demoproject.onboarding.controller;
 
+import com.demoproject.onboarding.entity.UserRole;
+import com.demoproject.onboarding.service.UserRoleService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.demoproject.onboarding.dto.UserRoleDTO;
-import com.demoproject.onboarding.service.UserRoleService;
-
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-
-
-
 @RestController
-@CrossOrigin
-@RequestMapping("/api/learningPath")
-@AllArgsConstructor
+@RequestMapping("/api/user-roles")
+@CrossOrigin(origins = "*")
 public class UserRoleController {
+
+    @Autowired
     private UserRoleService userRoleService;
 
-    // post user role api
+    // Admin: Create User Role
     @PostMapping
-    public ResponseEntity<UserRoleDTO> createUserRole(@RequestBody UserRoleDTO userRoleDTO){
-        UserRoleDTO savedUserRole = userRoleService.createUserRole(userRoleDTO);
-        return new ResponseEntity<>(savedUserRole, HttpStatus.CREATED);
+    public UserRole createUser(@RequestBody UserRole userRole) {
+        return userRoleService.createUserRole(userRole);
     }
 
-    //get ALl learning paths
+    // Get roles by email (for login dropdown)
+    @GetMapping("/email/{emailId}")
+    public List<UserRole> getRolesByEmail(@PathVariable String emailId) {
+        return userRoleService.getUserRolesByEmail(emailId);
+    }
+
+    // Admin: Get all users
     @GetMapping
-    public ResponseEntity<List<UserRoleDTO>> getAllLearningPaths(){
-        List<UserRoleDTO> userRoles = userRoleService.getAllLearningPaths();
-        return ResponseEntity.ok(userRoles);
+    public List<UserRole> getAllUsers() {
+        return userRoleService.getAllUsers();
     }
 }

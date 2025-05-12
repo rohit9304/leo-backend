@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRoleDTO {
+public class LearningPathsDTO {
 
     private Long talentId;
 

@@ -1,12 +1,17 @@
 package com.demoproject.onboarding.service;
 
-import java.util.List;
+import com.demoproject.onboarding.entity.UserRole;
 
-import com.demoproject.onboarding.dto.UserRoleDTO;
+import java.util.List;
+import java.util.Optional;
 
 public interface UserRoleService {
-    UserRoleDTO createUserRole(UserRoleDTO userRoleDTO);
 
-    List<UserRoleDTO> getAllLearningPaths();
+    UserRole createUserRole(UserRole userRole);
 
+    List<UserRole> getUserRolesByEmail(String emailId);
+
+    Optional<UserRole> getUserByEmail(String emailId);
+
+    List<UserRole> getAllUsers();
 }
