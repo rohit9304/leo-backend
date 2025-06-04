@@ -23,9 +23,27 @@ public class Cohort {
     private String cohortName;
     private String geo;
     private String market;
-    private String country;
     private String educationManager;
     private LocalDate endDate;
     private LocalDate startDate;
-    private String status;
+    private String status; 
+    private LocalDate indctionProjectedEndDate;
+    private LocalDate indctionProjectedStartDate;
+    private LocalDate specialityTrainingStartDate;
+    private LocalDate essentialProjectedndDate;
+    private LocalDate essentialStartDate;
+    private LocalDate y1GrowthSurveyEndDate;
+    private LocalDate y1GrowthSurveyStartDate;
+    private LocalDate stayAheadEventEndDate;
+    private LocalDate stayAHeadEventStartDate;
+
+//     Induction start date
+// Induction projected end date
+// Speciality training starts date
+// Essential start date
+// Essential projected end date
+// Y1 growth survey start date
+// Y1 growth survey end date
+// Stay ahead start date
+// Stay ahead end date
 }

@@ -25,6 +25,11 @@ public class CohortServiceImpl implements CohortService {
         return cohortRepository.findAll();
     }
 
+     @Override
+    public List<Cohort> getCohortsByMarket(String market) {
+        return cohortRepository.findByMarketIgnoreCase(market);
+    }
+
     @Override
     public Optional<Cohort> getCohortById(Long id) {
         return cohortRepository.findById(id);
@@ -38,7 +43,6 @@ public class CohortServiceImpl implements CohortService {
         cohort.setCohortName(cohortDetails.getCohortName());
         cohort.setGeo(cohortDetails.getGeo());
         cohort.setMarket(cohortDetails.getMarket());
-        cohort.setCountry(cohortDetails.getCountry());
         cohort.setEducationManager(cohortDetails.getEducationManager());
         cohort.setStartDate(cohortDetails.getStartDate());
         cohort.setEndDate(cohortDetails.getEndDate());

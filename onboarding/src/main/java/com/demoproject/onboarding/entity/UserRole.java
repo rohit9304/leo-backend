@@ -28,4 +28,6 @@ public class UserRole {
 
     private String status;
 
+    private String market;
+
 }

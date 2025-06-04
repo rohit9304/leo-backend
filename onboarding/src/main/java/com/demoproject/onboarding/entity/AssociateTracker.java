@@ -19,6 +19,7 @@ import lombok.Setter;
 public class AssociateTracker {
     @Id
     private String cnum;
+    private String name; 
     private String internetEmail;
     private String jrs;
     private String status;

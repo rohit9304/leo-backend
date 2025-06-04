@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.demoproject.onboarding.entity.Population;
+import com.demoproject.onboarding.repository.PopulationRepository;
 import com.demoproject.onboarding.service.PopulationService;
 
 @RestController
@@ -17,6 +18,14 @@ import com.demoproject.onboarding.service.PopulationService;
 public class PopulationController {
     @Autowired
     private PopulationService learnerService;
+
+    @Autowired
+    private PopulationRepository learnerRepository;
+
+    @GetMapping("/all")
+    public List<Population> getAllLearners1() {
+        return learnerRepository.findAll();
+    }
 
     @GetMapping
     public List<Population> getAllLearners() {

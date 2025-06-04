@@ -10,4 +10,6 @@ public interface CohortService {
     Optional<Cohort> getCohortById(Long id);
     Cohort updateCohort(Long id, Cohort cohort);
     void deleteCohort(Long id);
+    public List<Cohort> getCohortsByMarket(String market);
+
 }

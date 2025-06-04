@@ -30,9 +30,18 @@ public class CohortController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Cohort>> getAllCohorts() {
-        return ResponseEntity.ok(cohortService.getAllCohorts());
+    public ResponseEntity<List<Cohort>> getCohortsByMarket(@RequestParam(defaultValue = "ALL") String market) {
+        List<Cohort> cohorts;
+
+        if ("ALL".equalsIgnoreCase(market)) {
+            cohorts = cohortService.getAllCohorts();
+        } else {
+            cohorts = cohortService.getCohortsByMarket(market);
+        }
+
+        return ResponseEntity.ok(cohorts);
     }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Cohort> getCohortById(@PathVariable Long id) {
@@ -60,7 +69,7 @@ public class CohortController {
         List<Population> learners = associateTrackerService.getLearnersByCohortId(cohortId);
 
         CohortWithLearnersResponse response = new CohortWithLearnersResponse();
-        response.setCohort(cohort); // ✅ Now this matches
+        response.setCohort(cohort); 
         response.setLearners(learners);
         return response;
     }
