@@ -32,4 +32,19 @@ public class UserRoleController {
     public List<UserRole> getAllUsers() {
         return userRoleService.getAllUsers();
     }
+
+     @GetMapping("/{id}")
+    public UserRole getUserById(@PathVariable Long id) {
+        return userRoleService.getUserById(id);
+    }
+
+    @PutMapping("/{id}")
+    public UserRole updateUser(@PathVariable Long id, @RequestBody UserRole updatedUser) {
+        return userRoleService.updateUserRole(id, updatedUser);
+    }
+    
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userRoleService.deleteUserRole(id);
+    }
 }

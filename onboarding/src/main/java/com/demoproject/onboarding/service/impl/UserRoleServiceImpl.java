@@ -34,4 +34,28 @@ public class UserRoleServiceImpl implements UserRoleService {
     public List<UserRole> getAllUsers() {
         return userRoleRepository.findAll();
     }
+
+    public UserRole getUserById(Long id) {
+        Optional<UserRole> optional = userRoleRepository.findById(id);
+        return optional.orElse(null); // or throw custom NotFoundException
+    }
+
+    public UserRole updateUserRole(Long id, UserRole updatedUser) {
+        Optional<UserRole> existing = userRoleRepository.findById(id);
+        if (existing.isPresent()) {
+            UserRole user = existing.get();
+            user.setEmailId(updatedUser.getEmailId());
+            user.setRole(updatedUser.getRole());
+            user.setProgram(updatedUser.getProgram());
+            user.setStatus(updatedUser.getStatus());
+            user.setMarket(updatedUser.getMarket());
+            return userRoleRepository.save(user);
+        } else {
+            return null; // or throw NotFoundException
+        }
+    }
+
+    public void deleteUserRole(Long id) {
+        userRoleRepository.deleteById(id);
+    }
 }

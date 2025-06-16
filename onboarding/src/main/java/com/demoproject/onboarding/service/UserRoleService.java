@@ -14,4 +14,11 @@ public interface UserRoleService {
     Optional<UserRole> getUserByEmail(String emailId);
 
     List<UserRole> getAllUsers();
+
+    UserRole getUserById(Long id);
+
+    UserRole updateUserRole(Long id, UserRole updatedUser);
+    
+    void deleteUserRole(Long id);
+
 }
